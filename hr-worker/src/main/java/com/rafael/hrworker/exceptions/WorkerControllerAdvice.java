@@ -12,8 +12,8 @@ public class WorkerControllerAdvice {
   @ExceptionHandler(WorkerNotFoundException.class)
   @ResponseStatus(HttpStatus.NOT_FOUND)
   @ResponseBody
-  public String handleWorkerNotFoundException(WorkerNotFoundException e) {
-    return e.getMessage();
+  public ApiError handleWorkerNotFoundException(WorkerNotFoundException e) {
+    return new ApiError(HttpStatus.NOT_FOUND.value(), HttpStatus.NOT_FOUND.name(), e.getMessage());
   }
 
 }
